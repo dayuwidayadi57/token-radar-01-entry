@@ -2,7 +2,7 @@
 //
 // The program reads the sealed snapshot — /input/snapshot.json by
 // default, or --input <snapshot.json|directory> — and scores every
-// pre-token protocol with the radar-3 model in lib/model.ts. It writes
+// pre-token protocol with the radar-4 model in lib/model.ts. It writes
 // the ranked board to /output/board.json, the data.js the dashboard
 // reads, copies this repository's dashboard/ and screenshots/ into
 // /output, and last writes /output/dossier.json, the summary the judge
@@ -153,7 +153,7 @@ const { dashboardCount, screenshotCount } = writeOutputs(board, radar, destinati
 const kept = Object.keys(radar.model.kept_terms).join(', ') || 'none';
 process.stdout.write(
   `token radar: ${snapshot.protocols.length} protocols, ${snapshot.watchlist.length} on the watchlist, ${board.length} rows scored (${radar.early_size} early, ${radar.live_size} live set aside)\n` +
-    `token radar: radar-3 fit on ${radar.model.live_count} live tokens, LOO miss x${radar.model.loo_x_factor} (median |log err| ${radar.model.loo_median_abs_log_err}), kept terms: ${kept}\n` +
+    `token radar: radar-4 fit on ${radar.model.live_count} live tokens, LOO miss x${radar.model.loo_x_factor} (median |log err| ${radar.model.loo_median_abs_log_err}), kept terms: ${kept}\n` +
     `token radar: verdicts FARM ${radar.model.verdict_counts.FARM} / THIN ${radar.model.verdict_counts.THIN} / SKIP ${radar.model.verdict_counts.SKIP}\n` +
     `token radar: wrote ${join(destination, 'board.json')}, ${join(destination, 'data.js')}, ${join(destination, 'dashboard')} (${dashboardCount} files), ${join(destination, 'screenshots')} (${screenshotCount} images) and ${join(destination, 'dossier.json')}\n`,
 );
