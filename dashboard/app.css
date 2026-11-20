@@ -48,6 +48,7 @@ a { color: var(--accent); }
 .lede { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr); gap: var(--s6); padding: var(--s6) 0 var(--s5); }
 .lede p { color: var(--muted); max-width: 62ch; margin-top: var(--s2); }
 .lede p b { color: var(--ink); font-weight: 600; }
+.lede .accounting { grid-column: 1 / -1; max-width: none; border-top: 1px solid var(--border); padding-top: var(--s3); }
 .facts { display: grid; gap: var(--s2); align-content: start; border-left: 1px solid var(--border); padding-left: var(--s5); }
 .fact { display: flex; align-items: baseline; justify-content: space-between; gap: var(--s3); }
 .fact b { font-family: var(--font-num); font-size: 15px; font-weight: 600; color: var(--amber); }

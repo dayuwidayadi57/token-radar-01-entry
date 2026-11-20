@@ -1,4 +1,4 @@
-// Token Radar dashboard (radar-3). It reads window.RADAR (written beside
+// Token Radar dashboard (radar-4). It reads window.RADAR (written beside
 // dashboard/ by main.ts) and renders the ranked board, a filterable table,
 // a per-protocol detail view with the model's own inputs and the protocol's
 // costed farm plan and verdict, and a model sandbox. No network: every byte
@@ -158,11 +158,12 @@
       el('div', { class: 'facts' },
         el('div', { class: 'fact' }, el('span', { text: 'Watchlist covered' }), el('b', { text: DATA.watchlist_size + ' / ' + DATA.watchlist_size })),
         el('div', { class: 'fact' }, el('span', { text: 'Pre-token rows scored' }), el('b', { text: String(DATA.board_size) })),
-        el('div', { class: 'fact' }, el('span', { text: 'Blind-test miss (LOO)' }), el('b', { text: 'x' + DATA.model.loo_x_factor })),
+        el('div', { class: 'fact' }, el('span', { text: 'Protocols accounted for' }), el('b', { text: String(DATA.accounting.total) + ' of ' + String(DATA.accounting.total) })),
         el('div', { class: 'fact' }, el('span', { text: 'Farm verdicts' }), el('b', { text: vc.FARM + ' FARM · ' + vc.THIN + ' THIN · ' + vc.SKIP + ' SKIP' })),
         el('div', { class: 'fact' }, el('span', { text: 'Top 10 implied value' }), el('b', { text: fmtUsd(top10) })),
         el('div', { class: 'fact' }, el('span', { text: 'Live-token protocols set aside' }), el('b', { text: String(DATA.live_size) }))
-      )
+      ),
+      el('p', { class: 'accounting', text: 'All ' + DATA.accounting.total + ' protocols in the snapshot are accounted for: ' + DATA.accounting.ranked + ' ranked on this board, ' + DATA.accounting.live_fitted + ' live tokens fitted by the model (' + DATA.accounting.live_shown + ' shown), ' + DATA.accounting.live_unfitted + ' live tokens the fit cannot use (no positive market cap or TVL), and ' + (DATA.accounting.excluded_category + DATA.accounting.excluded_name) + ' pre-token protocols excluded by the house rule (' + DATA.accounting.excluded_category + ' by category, ' + DATA.accounting.excluded_name + ' by name).' })
     );
   }
 
